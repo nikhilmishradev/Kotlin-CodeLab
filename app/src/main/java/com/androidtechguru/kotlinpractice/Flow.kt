@@ -4,20 +4,32 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.plus
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.suspendCancellableCoroutine
 
 fun main() = runBlocking {
-    fetchData()
-        .map { it * 2 }
+    Loading.showLoading(true)
+    fetchFlowData()
+        .map { it * 1 }
         .collect { value ->
             println(value)
         }
+    Loading.showLoading(false)
+    println("Disconnection...")
 }
 
-fun fetchData(): Flow<Int> = flow {
+fun fetchFlowData(): Flow<Int> = flow {
+    println("00000")
     for (i in 1..5) {
-        delay(1000L)
+        delay(500L)
         emit(i)
+    }
+    println("999999")
+
+}
+
+class Output : Result() {
+    fun printOutput() {
+        println("Output object...")
     }
 }
