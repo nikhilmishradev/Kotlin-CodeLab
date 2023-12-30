@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,9 +17,13 @@
         android:theme="@style/Theme.KotlinConceptsPractice"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".coroutines.flow.FlowActivity"
+            android:exported="false"
+            android:label="@string/title_activity_flow"
+            android:theme="@style/Theme.KotlinConceptsPractice" />
+        <activity
+            android:name=".ui.activity.DataBindingActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.KotlinConceptsPractice">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +31,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".services.MyForegroundService" />
+
+        <activity
+            android:name=".ui.activity.ProductListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_product_list"
+            android:theme="@style/Theme.KotlinConceptsPractice" />
+        <activity android:name=".ui.customview.CustomViewActivity" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:configChanges="screenLayout|screenSize"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.KotlinConceptsPractice" />
+        <activity android:name=".ui.activity.ActivityA" />
     </application>
 
 </manifest>

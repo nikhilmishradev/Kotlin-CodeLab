@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextView">
+        <attr name="showText" format="boolean" />
+        <attr name="header" format="boolean" />
+        <attr name="textColor" format="reference|color" />
+        <attr name="bold" format="boolean" />
+    </declare-styleable>
+</resources>

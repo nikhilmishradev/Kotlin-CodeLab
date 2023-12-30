@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Kotlin Concepts Practice</string>
+    <string name="title_activity_product_list">ProductListActivity</string>
+    <string name="title_activity_flow">FlowActivity</string>
 </resources>

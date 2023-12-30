@@ -1,31 +1,19 @@
-package com.androidtechguru.kotlinpractice
+package com.androidtechguru.kotlinpractice.coroutines
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Delay
+import com.androidtechguru.kotlinpractice.coroutines.flow.fetchFlowData
+import com.androidtechguru.kotlinpractice.oops.classes.Loading
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.yield
 
 data class User(val name: String)
 
 fun main() = runBlocking {
-    runBlocking {
-        val job = launch {
-            delay(1000L)
-            println("Coroutine executed")
-        }
-
-        println("Hello")
-        job.join()
-        println("World")
-    }
-    return@runBlocking
     Loading.showLoading(true)
     performConcurrentTask()
     var result = fetchData().also {
@@ -70,6 +58,7 @@ suspend fun performConcurrentTask() {
             return@async task1
         }
     }
+    yield()         // suspending function() --->>> delay() is another suspending function
     val result2 = withContext(Dispatchers.IO) {
         async {
             var task2 = 0
@@ -85,4 +74,13 @@ suspend fun performConcurrentTask() {
     }
     val finalResult = result1.await() + result2.await()
     println(finalResult)
+
+    var ok = withContext(Dispatchers.IO){
+
+    }
+}
+
+object TAG{
+    const val verbose ="VERBOSE"
+    const val coroutine="COROUTINES"
 }
