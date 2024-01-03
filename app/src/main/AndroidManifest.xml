@@ -17,6 +17,11 @@
         android:theme="@style/Theme.KotlinConceptsPractice"
         tools:targetApi="31">
         <activity
+            android:name=".ui.compose.StopWatchActivity"
+            android:exported="false"
+            android:label="@string/title_activity_stop_watch"
+            android:theme="@style/Theme.KotlinConceptsPractice" />
+        <activity
             android:name=".coroutines.flow.FlowActivity"
             android:exported="false"
             android:label="@string/title_activity_flow"

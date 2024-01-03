@@ -19,8 +19,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.androidtechguru.kotlinpractice.coroutines.TAG
 import com.androidtechguru.kotlinpractice.coroutines.flow.ui.theme.KotlinConceptsPracticeTheme
-import com.androidtechguru.kotlinpractice.ui.activity.ProductListActivity
-import com.androidtechguru.kotlinpractice.ui.activity.launchActivity
 
 class FlowActivity : ComponentActivity() {
 
@@ -66,7 +64,6 @@ fun TextView(
         )
         Button(onClick = {
             flowViewModel.fetchFlowData()
-//            launchActivity(context, ProductListActivity::class.java)
         }) {
             Text(text = "Emit Value fetchFlowData()...")
         }
